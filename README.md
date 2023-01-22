@@ -9,6 +9,15 @@ Unternehmen automatisiert anhand fundamentaler Daten analysieren und bewerten un
 ### Datenaquise
 Unternehmenskennzahlen über API oder Webscraper sammeln
 idealerweise regelmäßig (z.B. monatlich) aktualisiert
-Kennzahlen kommen aus seperater Tabelle (mit Quelle, [hier klicken](https://docs.google.com/spreadsheets/d/1Gey_Ki_RBlKmYTK_6NeiPbnTqjyGkbalJ7TLtR6sqYw/edit?usp=sharing)) 
+Kennzahlen kommen aus seperater Tabelle (mit Quelle, [hier klicken](https://docs.google.com/spreadsheets/d/1Gey_Ki_RBlKmYTK_6NeiPbnTqjyGkbalJ7TLtR6sqYw/edit?usp=sharing))
+
+## Phase II
+### Vizualation
+Ziel: graphische Darstellung des historischen Kursverlaufs + des Mauspad_scores (oder F-Score, wenn verfügbar)
+Variablen: UpdateRate, startTime, AssetPool, buy/sell-Trigger
+
+ToDo: 
+Emmiwinks: F-Score errechnen zu jedem beliebligen Zeitpunkt zu Aktie TMRAY + Vizualation
+Lazer: Recherche eigener Score aus yfinance Daten + geeignete Triggerpunkte
 
 

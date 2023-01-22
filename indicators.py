@@ -1,1 +1,0 @@
-# Library of functions that calculate different KPIs
