@@ -1,100 +1,132 @@
+import os
+from yfinance import Ticker
 from alpha_vantage.fundamentaldata import FundamentalData
+from pandas import read_csv
 
-def get_net_income(income_df):
-    return float(income_df.loc['netIncome'][0])
+def format_alpha_sheets(raw_df):
+    df = raw_df[0].T[2:]
+    df.columns = list(raw_df[0].T.iloc[0])
+    return df
 
-def get_roa(balance_df, income_df):
-    current = float(balance_df.loc['totalAssets'][0])
-    previous = float(balance_df.loc['totalAssets'][1])
-    av_assets=(current+previous)/2
-    return get_net_income(income_df)/av_assets
+class F_score:
+    def __init__(self, symbol):
 
-def get_ocf(cash_df):
-    return float(cash_df.loc['operatingCashflow'][0])
+        self.year_col = 0
 
-def get_ltdebt(balance_df):
-    current = float(balance_df.loc['longTermDebt'][0])
-    previous = float(balance_df.loc['longTermDebt'][1])
-    return previous - current
+        key = '4UEFVZJRMJOOAUST'
+        fd = FundamentalData(key,output_format = 'pandas')
 
-def get_current_ratio(balance_df):
-    current_TCA = float(balance_df.loc['totalCurrentAssets'][0])
-    previous_TCA = float(balance_df.loc['totalCurrentAssets'][1])
-    current_TCL = float(balance_df.loc['totalCurrentLiabilities'][0])
-    previous_TCL = float(balance_df.loc['totalCurrentLiabilities'][1])
-    ratio1 = current_TCA/ current_TCL
-    ratio2 = previous_TCA / previous_TCL
-    return ratio1-ratio2
+        if str(symbol) in os.listdir('data'):
+            self.income_statement = read_csv('data/'+str(symbol)+'/'+str(symbol)+'_income_statement_annual.csv', index_col=0)
+            self.balance_sheet = read_csv('data/'+str(symbol)+'/'+str(symbol)+'_balance_sheet_annual.csv', index_col=0)
+            self.cash_flow = read_csv('data/'+str(symbol)+'/'+str(symbol)+'_cash_flow_annual.csv', index_col=0)
 
-def get_new_shares(balance_df):
-    current = float(balance_df.loc['commonStock'][0])
-    previous = float(balance_df.loc['commonStock'][1])
-    return current - previous 
+        else:
+            self.income_statement = format_alpha_sheets(fd.get_income_statement_annual(symbol))
+            self.balance_sheet = format_alpha_sheets(fd.get_balance_sheet_annual(symbol))
+            self.cash_flow = format_alpha_sheets(fd.get_cash_flow_annual(symbol))
 
-def get_gross_margin(income_df):
-    current = float(income_df.loc['grossProfit'][0])/float(income_df.loc['totalRevenue'][0])
-    previous =  float(income_df.loc['grossProfit'][1])/float(income_df.loc['totalRevenue'][1])
-    return current - previous
+            os.mkdir('data/'+str(symbol))
+            self.income_statement.to_csv('data/'+str(symbol)+'/'+str(symbol)+'_income_statement_annual.csv')
+            self.balance_sheet.to_csv('data/'+str(symbol)+'/'+str(symbol)+'_balance_sheet_annual.csv')
+            self.cash_flow.to_csv('data/'+str(symbol)+'/'+str(symbol)+'_cash_flow_annual.csv')
 
-def get_asset_turnover_ratio(income_df, balance_df):
-    current = float(balance_df.loc['totalAssets'][0])
-    prev_1 = float(balance_df.loc['totalAssets'][1])
-    prev_2 = float(balance_df.loc['totalAssets'][2])
-    av_assets1=(current+prev_1)/2
-    av_assets2=(prev_1+ prev_2)/2
-    atr1=float(income_df.loc['totalRevenue'][0])/av_assets1
-    atr2=float(income_df.loc['totalRevenue'][1])/av_assets2
-    return atr1-atr2
+    def get_net_income(self):
+        return float(self.income_statement.loc['netIncome'][self.year_col])
 
-def get_piotroski_score(income_df, balance_df, cash_df):
-    score=0
-    
-    if get_net_income(income_df)>0:
-        score +=1
+    def get_roa(self):
+        current = float(self.balance_sheet.loc['totalAssets'][self.year_col])
+        previous = float(self.balance_sheet.loc['totalAssets'][self.year_col+1])
+        av_assets=(current+previous)/2
+        return self.get_net_income()/av_assets
 
-    if get_roa(balance_df, income_df)>0:
-        score +=1
+    def get_ocf(self):
+        return float(self.cash_flow.loc['operatingCashflow'][self.year_col])
+
+    def get_ltdebt(self):
+        current = float(self.balance_sheet.loc['longTermDebt'][self.year_col])
+        previous = float(self.balance_sheet.loc['longTermDebt'][self.year_col+1])
+        return previous - current
+
+    def get_current_ratio(self):
+        current_TCA = float(self.balance_sheet.loc['totalCurrentAssets'][self.year_col])
+        previous_TCA = float(self.balance_sheet.loc['totalCurrentAssets'][self.year_col+1])
+        current_TCL = float(self.balance_sheet.loc['totalCurrentLiabilities'][self.year_col])
+        previous_TCL = float(self.balance_sheet.loc['totalCurrentLiabilities'][self.year_col+1])
+        ratio1 = current_TCA/ current_TCL
+        ratio2 = previous_TCA / previous_TCL
+        return ratio1-ratio2
+
+    def get_new_shares(self):
+        current = float(self.balance_sheet.loc['commonStock'][self.year_col])
+        previous = float(self.balance_sheet.loc['commonStock'][self.year_col+1])
+        return current - previous 
+
+    def get_gross_margin(self):
+        current = float(self.income_statement.loc['grossProfit'][self.year_col])\
+                /float(self.income_statement.loc['totalRevenue'][self.year_col])
+        previous =  float(self.income_statement.loc['grossProfit'][self.year_col+1])\
+                /float(self.income_statement.loc['totalRevenue'][self.year_col+1])
+        return current - previous
+
+    def get_asset_turnover_ratio(self):
+        current = float(self.balance_sheet.loc['totalAssets'][self.year_col])
+        prev_1 = float(self.balance_sheet.loc['totalAssets'][self.year_col+1])
+        prev_2 = float(self.balance_sheet.loc['totalAssets'][self.year_col+2])
+        av_assets1=(current+prev_1)/2
+        av_assets2=(prev_1+ prev_2)/2
+        atr1=float(self.income_statement.loc['totalRevenue'][self.year_col])/av_assets1
+        atr2=float(self.income_statement.loc['totalRevenue'][self.year_col+1])/av_assets2
+        return atr1-atr2
+
+    def get_piotroski_score(self):
+        score=0
         
-    if get_ocf(cash_df)>0:
-        score +=1
-        
-    if get_ocf(cash_df)>get_net_income(income_df):
-        score +=1
-        
-    if get_ltdebt(balance_df)>0:
-        score +=1
-        
-    if get_current_ratio(balance_df)>0:
-        score +=1
-        
-    if get_new_shares(balance_df)>0:
-        score +=1
-        
-    if get_gross_margin(income_df)>0:
-        score +=1
-        
-    if get_asset_turnover_ratio(income_df, balance_df)>0:
-        score +=1
-        
-    return score
+        if self.get_net_income()>0:
+            score +=1
 
-key = '4UEFVZJRMJOOAUST'
-fd = FundamentalData(key,output_format = 'pandas')
-ticker = 'WM'
+        if self.get_roa()>0:
+            score +=1
+            
+        if self.get_ocf()>0:
+            score +=1
+            
+        if self.get_ocf() > self.get_net_income():
+            score +=1
+            
+        if self.get_ltdebt()>0:
+            score +=1
+            
+        if self.get_current_ratio()>0:
+            score +=1
+            
+        if self.get_new_shares()>0:
+            score +=1
+            
+        if self.get_gross_margin()>0:
+            score +=1
+            
+        if self.get_asset_turnover_ratio()>0:
+            score +=1
+            
+        return score
 
-raw_IS = fd.get_income_statement_annual(ticker)
-income_statement = raw_IS[0].T[2:]
-income_statement.columns = list(raw_IS[0].T.iloc[0])
+if __name__ in '__main__':
 
-raw_BS = fd.get_balance_sheet_annual(ticker)
-balance_sheet = raw_BS[0].T[2:]
-balance_sheet.columns = list(raw_BS[0].T.iloc[0])
+    symbol = 'tsla'
 
-raw_CS = fd.get_cash_flow_annual(ticker)
-cash_flow = raw_CS[0].T[2:]
-cash_flow.columns = list(raw_CS[0].T.iloc[0])
+    y_ticker = Ticker(symbol)
+    f_score = F_score(symbol)
 
-income_statement.to_csv('income_statement.csv')
-balance_sheet.to_csv('balance_sheet.csv')
-cash_flow.to_csv('cash_flow.csv')
-print("The Piotroski F Score is: " + str(get_piotroski_score(income_statement, balance_sheet, cash_flow)))
+    start = f_score.income_statement.columns[-3]
+    f_list = []
+    for i in range(len(f_score.income_statement.columns)-2):
+        f_score.year_col = i
+        f_list.append(f_score.get_piotroski_score())
+
+    #    print("The Piotroski F Score is: " + str(f_score.get_piotroski_score()))
+    import pandas as pd
+    price = y_ticker.history(start=start)
+    price.index = pd.DatetimeIndex(price.index).date
+    f_df = pd.DataFrame(index=pd.DatetimeIndex(f_score.income_statement.columns[0:-2]).date,data=f_list, columns=['f_score'])
+    df = pd.concat([price.Close, f_df], axis=1)#.fillna(method='pad')
