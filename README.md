@@ -21,3 +21,11 @@ ToDo:
 - Lazer: Recherche eigener Score aus yfinance Daten + geeignete Triggerpunkte
 
 
+#### Anleitung Prototyp
+```
+git clone https://github.com/Emmiwinks/MAUSPAD.git
+cd MAUSPAD
+pip install -r requirements.txt 
+python -m app
+```
+http://127.0.0.1:8050/ im Browser öffnen
