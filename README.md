@@ -13,11 +13,11 @@ Kennzahlen kommen aus seperater Tabelle (mit Quelle, [hier klicken](https://docs
 
 ## Phase II
 ### Vizualation
-Ziel: graphische Darstellung des historischen Kursverlaufs + des Mauspad_scores (oder F-Score, wenn verfügbar)
+Ziel: graphische Darstellung des historischen Kursverlaufs + des Mauspad_scores (oder F-Score, wenn verfügbar) </br>
 Variablen: UpdateRate, startTime, AssetPool, buy/sell-Trigger
 
 ToDo: 
-Emmiwinks: F-Score errechnen zu jedem beliebligen Zeitpunkt zu Aktie TMRAY + Vizualation
-Lazer: Recherche eigener Score aus yfinance Daten + geeignete Triggerpunkte
+- Emmiwinks: F-Score errechnen zu jedem beliebligen Zeitpunkt zu irgendeiner Aktie + Vizualation
+- Lazer: Recherche eigener Score aus yfinance Daten + geeignete Triggerpunkte
 
 
