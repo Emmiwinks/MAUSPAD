@@ -1,6 +1,6 @@
 # MAUSPAD 🐭
 Coconut Panda presents
-TODO: **Abkürzung ausgeschrieben**
+**Market Analysis Ultimate Stocks Python Awesome Database**
 
 ## Ziel
 Unternehmen automatisiert anhand fundamentaler Daten analysieren und bewerten und auf Grundlage dessen eine Kaufentscheidung treffen. 
@@ -20,6 +20,14 @@ ToDo:
 - Emmiwinks: F-Score errechnen zu jedem beliebligen Zeitpunkt zu irgendeiner Aktie + Vizualation
 - Lazer: Recherche eigener Score aus yfinance Daten + geeignete Triggerpunkte
 
+## Phase III
+### Backtesting
+Ziel: Ausführunge von Buy- und Sell- Orders anhand festgelegter Strategien basierend auf historischen Kursdaten und Berechnung des Gewinns.
+- es zählen nur Umsätze bis zur letzten Sell-Order
+
+ToDo:
+- Emmiwinks: Implementierung
+- Lazer: Bestimmung eines geeigneten Scores + Triggerpunkte für Buy/Sell (Hysterese beachten!), am besten relativ zu letztem Quartal etc...
 
 #### Anleitung Prototyp
 ```
