@@ -1,0 +1,63 @@
+,0
+SimFinId,18
+Ticker,GOOG
+Fiscal Period,Q4
+Fiscal Year,2022
+Report Date,2022-12-31
+Publish Date,2023-02-03
+Restated Date,2023-02-03
+Source,https://www.sec.gov/Archives/edgar/data/1652044/000165204422000071/0001652044-22-000071-index.htm
+TTM,False
+Value Check,True
+Net Income/Starting Line,13624000000
+Net Income,
+Net Income from Discontinued Operations,
+Other Adjustments,
+Depreciation & Amortization,4065000000
+Non-Cash Items,5636000000
+Stock-Based Compensation,
+Deferred Income Taxes,
+Other Non-Cash Adjustments,
+Change in Working Capital,289000000
+Change in Accounts Receivable,
+Change in Inventories,
+Change in Accounts Payable,
+Change in Other,
+Net Cash from Discontinued Operations (Operating),
+Net Cash from Operating Activities,23614000000
+Change in Fixed Assets & Intangibles,-7595000000
+Disposition of Fixed Assets & Intangibles,
+Disposition of Fixed Assets,
+Disposition of Intangible Assets,
+Acquisition of Fixed Assets & Intangibles,-7595000000
+Purchase of Fixed Assets,-7595000000
+Acquisition of Intangible Assets,
+Other Change in Fixed Assets & Intangibles,
+Net Change in Long Term Investment,1230000000
+Decrease in Long Term Investment,
+Increase in Long Term Investment,
+Net Cash from Acquisitions & Divestitures,-84000000
+Net Cash from Divestitures,
+Cash for Acquisition of Subsidiaries,
+Cash for Joint Ventures,
+Net Cash from Other Acquisitions,
+Other Investing Activities,222000000
+Net Cash from Discontinued Operations (Investing),
+Net Cash from Investing Activities,-6227000000
+Dividends Paid,
+Cash from (Repayment of) Debt,-168000000
+"Cash from (Repayment of) Short Term Debt, Net",
+"Cash from (Repayment of) Long Term Debt, Net",
+Repayments of Long Term Debt,
+Cash from Long Term Debt,
+Cash from (Repurchase of) Equity,-15407000000
+Increase in Capital Stock,
+Decrease in Capital Stock,-15407000000
+Other Financing Activities,-2054000000
+Net Cash from Discontinued Operations (Financing),
+Net Cash from Financing Activities,-17629000000
+Net Cash Before Disc. Operations and FX,-242000000
+Change in Cash from Disc. Operations and Other,
+Net Cash Before FX,-242000000
+Effect of Foreign Exchange Rates,137000000
+Net Change in Cash,-105000000

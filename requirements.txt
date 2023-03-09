@@ -5,4 +5,5 @@ dash_html_components==2.0.0
 pandas==1.5.2
 pandas_datareader==0.10.0
 plotly==5.11.0
-yfinance==0.2.4
+requests==2.28.1
+yfinance==0.2.12

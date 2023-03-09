@@ -1,0 +1,69 @@
+,0
+SimFinId,18
+Ticker,GOOG
+Fiscal Period,Q4
+Fiscal Year,2022
+Report Date,2022-12-31
+Publish Date,2023-02-03
+Restated Date,2023-02-03
+Source,https://www.sec.gov/Archives/edgar/data/1652044/000165204422000071/0001652044-22-000071-index.htm
+TTM,False
+Value Check,True
+Revenue,76048000000
+Sales & Services Revenue,
+Financing Revenue,
+Other Revenue,
+Cost of Revenue,-35342000000
+Cost of Goods & Services,
+Cost of Financing Revenue,
+Cost of Other Revenue,
+Gross Profit,40706000000
+Other Operating Income,
+Operating Expenses,-22546000000
+"Selling, General & Administrative",-12279000000
+Selling & Marketing,
+General & Administrative,
+Research & Development,-10267000000
+Depreciation & Amortization,
+Provision for Doubtful Accounts,
+Other Operating Expenses,
+Operating Income (Loss),18160000000
+Non-Operating Income (Loss),-1013000000
+"Interest Expense, Net",
+Interest Expense,
+Interest Income,
+Other Investment Income (Loss),
+Foreign Exchange Gain (Loss),
+Income (Loss) from Affiliates,
+Other Non-Operating Income (Loss),-1013000000
+"Pretax Income (Loss), Adj.",17147000000
+Abnormal Gains (Losses),
+Acquired In-Process R&D,
+Merger & Acquisition Expense,
+Abnormal Derivatives,
+Disposal of Assets,
+Early Extinguishment of Debt,
+Asset Write-Down,
+Impairment of Goodwill & Intangibles,
+Sale of Business,
+Legal Settlement,
+Restructuring Charges,
+Sale of Investments & Unrealized Investments,
+Insurance Settlement,
+Other Abnormal Items,
+Pretax Income (Loss),17147000000
+"Income Tax (Expense) Benefit, Net",-3523000000
+Current Income Tax,
+Deferred Income Tax,
+Tax Allowance/Credit,
+"Income (Loss) from Affiliates, Net of Taxes",
+Income (Loss) from Continuing Operations,13624000000
+Net Extraordinary Gains (Losses),
+Discontinued Operations,
+Accounting Charges & Other,
+Income (Loss) Incl. Minority Interest,13624000000
+Minority Interest,
+Net Income,13624000000
+Preferred Dividends,
+Other Adjustments,
+Net Income (Common),13624000000

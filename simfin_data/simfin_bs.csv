@@ -1,0 +1,96 @@
+,0
+SimFinId,18
+Ticker,GOOG
+Fiscal Period,Q4
+Fiscal Year,2022
+Report Date,2022-12-31
+Publish Date,2023-02-03
+Restated Date,2023-02-03
+Source,https://www.sec.gov/Archives/edgar/data/1652044/000165204422000071/0001652044-22-000071-index.htm
+TTM,False
+Value Check,True
+"Cash, Cash Equivalents & Short Term Investments",113762000000
+Cash & Cash Equivalents,21879000000
+Short Term Investments,91883000000
+Accounts & Notes Receivable,40258000000
+"Accounts Receivable, Net",40258000000
+"Notes Receivable, Net",
+Unbilled Revenues,
+Inventories,2670000000
+Raw Materials,
+Work In Process,
+Finished Goods,
+Other Inventory,
+Other Short Term Assets,8105000000
+Prepaid Expenses,
+Derivative & Hedging Assets (Short Term),
+Assets Held-for-Sale,
+Deferred Tax Assets (Short Term),
+Income Taxes Receivable,
+Discontinued Operations (Short Term),
+Misc. Short Term Assets,8105000000
+Total Current Assets,164795000000
+"Property, Plant & Equipment, Net",112668000000
+"Property, Plant & Equipment",
+Accumulated Depreciation,
+Long Term Investments & Receivables,30492000000
+Long Term Investments,
+Long Term Marketable Securities,
+Long Term Receivables,
+Other Long Term Assets,57309000000
+Intangible Assets,2084000000
+Goodwill,28960000000
+Other Intangible Assets,
+Prepaid Expense,
+Deferred Tax Assets (Long Term),5261000000
+Derivative & Hedging Assets (Long Term),
+Prepaid Pension Costs,
+Discontinued Operations (Long Term),
+Investments in Affiliates,
+Misc. Long Term Assets,21004000000
+Total Noncurrent Assets,200469000000
+Total Assets,365264000000
+Payables & Accruals,65392000000
+Accounts Payable,5128000000
+Accrued Taxes,
+Interest & Dividends Payable,
+Other Payables & Accruals,60264000000
+Short Term Debt,
+Short Term Borrowings,
+Short Term Capital Leases,
+Current Portion of Long Term Debt,
+Other Short Term Liabilities,3908000000
+Deferred Revenue (Short Term),3908000000
+Liabilities from Derivatives & Hedging (Short Term),
+Deferred Tax Liabilities (Short Term),
+Liabilities from Discontinued Operations (Short Term),
+Misc. Short Term Liabilities,
+Total Current Liabilities,69300000000
+Long Term Debt,14701000000
+Long Term Borrowings,
+Long Term Capital Leases,
+Other Long Term Liabilities,25119000000
+Accrued Liabilities,
+Pension Liabilities,
+Pensions,
+Other Post-Retirement Benefits,
+Deferred Compensation,
+Deferred Revenue (Long Term),599000000
+Deferred Tax Liabilities (Long Term),9772000000
+Liabilities from Derivatives & Hedging (Long Term),
+Liabilities from Discontinued Operations (Long Term),
+Misc. Long Term Liabilities,14748000000
+Total Noncurrent Liabilities,39820000000
+Total Liabilities,109120000000
+Preferred Equity,0
+Share Capital & Additional Paid-In Capital,68184000000
+Common Stock,
+Additional Paid in Capital,
+Other Share Capital,
+Treasury Stock,
+Retained Earnings,195563000000
+Other Equity,-7603000000
+Equity Before Minority Interest,256144000000
+Minority Interest,
+Total Equity,256144000000
+Total Liabilities & Equity,365264000000

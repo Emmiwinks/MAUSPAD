@@ -20,14 +20,30 @@ ToDo:
 - Emmiwinks: F-Score errechnen zu jedem beliebligen Zeitpunkt zu irgendeiner Aktie + Vizualation
 - Lazer: Recherche eigener Score aus yfinance Daten + geeignete Triggerpunkte
 
-## Phase III
-### Backtesting
+| **Kennwert**      	| **Berechnung**                	| **Soll** 	| **Grenzwert** 	| **Kommentar**                 	|
+|-------------------	|-------------------------------	|----------	|---------------	|-------------------------------	|
+| EV/MC             	| Enterprise Value / Market Cap 	| <        	| 2             	|                               	|
+| Netto-Debt        	| Total Debt / Total Cash       	| <        	| 2             	| Verschuldungsgrad             	|
+| EV/EBIT           	| Enterprise Value / EBIT       	| <        	| 20            	|                               	|
+| PEG-Ratio         	|                               	| <        	| 1             	| Price-Earnings-Growth Ratio, nicht möglich, weil growth info fehlt   	|
+| Net profit Margin 	|                               	| >        	| 10%           	|                               	|
+| Piotroski score   	|                               	| >        	| 8             	| P-Score jetzt auch bei Simfin 	|
+| Return on Equity  	|                               	| >        	| 15%           	|                               	|
+
+## Phase III - Backtesting
 Ziel: Ausführunge von Buy- und Sell- Orders anhand festgelegter Strategien basierend auf historischen Kursdaten und Berechnung des Gewinns.
 - es zählen nur Umsätze bis zur letzten Sell-Order
 
 ToDo:
 - Emmiwinks: Implementierung
 - Lazer: Bestimmung eines geeigneten Scores + Triggerpunkte für Buy/Sell (Hysterese beachten!), am besten relativ zu letztem Quartal etc...
+
+## Phase IV - Fine tuning
+Ziel: Strategie verfeinern durch 
+- Festlegen des potentiellen Portfolio (Asset Pool)
+- Verbesserung des MAUSPAD™-Scores
+- Entscheidung darüber, ob MAUSPAD™-Score-Schwellwerte festgelegt oder optimiert werden sollen
+- Überlegungen, welche Strategie(n) als Benchmark gelten sollen (z.B. Buy-and-Hold des ganzen Portfolios)
 
 #### Anleitung Prototyp
 ```
