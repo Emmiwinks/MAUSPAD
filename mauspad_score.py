@@ -41,13 +41,13 @@ class Mauspad_score:
         reqs = (grequests.get(api, params=param) for param in params)
         all_reqs = grequests.map(reqs)
 
-
         for i in all_reqs:
             load = json.loads(i.text)
             if "error" in str(load):
                 print(load)
                 exit()
-            data.append(load[0]["data"][0])
+            elif load[0]["found"] == True:
+                data.append(load[0]["data"][0])
 
         df = pd.DataFrame(data, columns=load[0]["columns"]).fillna(0)
         df = df.set_index(pd.to_datetime(df["Report Date"], errors = 'coerce'), drop=True)
@@ -65,8 +65,11 @@ class Mauspad_score:
         raw = raw.set_index(raw["Date"], drop=True)
         final_dates = []
         for date in dates:
-            # if quarter's end date not available in prices, find an earlier date as an alternative
-            while raw['Date'].eq(date).any() == False:
+            # if quarter's end date not available in prices, find an earlier date as an alternative, skip first date
+            while raw["Date"].eq(date).any() == False:
+                # if statement values are earlier than any price recorded, skip
+                if raw["Date"][0] > date:
+                    break
                 date += timedelta(days=-1)
             final_dates.append(date)
         
@@ -122,20 +125,20 @@ class Mauspad_score:
 
 
     def get_score(self, thresholds):
-        df = pd.DataFrame(data=[0]*len(self.bs), columns=["score"], index=self.bs.index)
+        df = pd.DataFrame(data=[0]*len(self.bs), columns=[self.symbol], index=self.bs.index)
 
-        df['score'] += self.ev_mc().apply(lambda x: 1 if x < thresholds["ev_mc"] else 0)
-        df['score'] += self.netto_debt().apply(lambda x: 1 if x < thresholds["netto_debt"] else 0)
-        df['score'] += self.ev_ebit().apply(lambda x: 1 if x < thresholds["ev_ebit"] else 0)
-        df['score'] += self.net_profit_margin().apply(lambda x: 1 if x > thresholds["net_profit_margin"] else 0)
-        df['score'] += self.roe().apply(lambda x: 1 if x > thresholds["roe"] else 0)
+        df[self.symbol] += self.ev_mc().apply(lambda x: 1 if x < thresholds["ev_mc"] else 0)
+        df[self.symbol] += self.netto_debt().apply(lambda x: 1 if x < thresholds["netto_debt"] else 0)
+        df[self.symbol] += self.ev_ebit().apply(lambda x: 1 if x < thresholds["ev_ebit"] else 0)
+        df[self.symbol] += self.net_profit_margin().apply(lambda x: 1 if x > thresholds["net_profit_margin"] else 0)
+        df[self.symbol] += self.roe().apply(lambda x: 1 if x > thresholds["roe"] else 0)
         
         return df
 
 
 if __name__ in '__main__':
 
-    symbol = 'TSLA'
+    symbol = 'GOOG'
     thresholds = {"ev_mc": 2,
                   "netto_debt": 2,
                   "ev_ebit": 20,
@@ -143,10 +146,10 @@ if __name__ in '__main__':
                   "roe": 15}
 
 
-    m_score = Mauspad_score(symbol, '2012-01-01', '2022-12-31')
+    m_score = Mauspad_score(symbol, '2012-01-01', '2012-12-31')
     # print("EV/MC: ", m_score.ev_mc())
     # print("Netto Debt", m_score.netto_debt())
     # print("EV/EBIT", m_score.ev_ebit())
     # print("net margin", m_score.net_profit_margin())
-    # print("roe", m_score.roe())
-    # print("score", m_score.get_score(thresholds))
+    print("roe", m_score.roe())
+    print("score", m_score.get_score(thresholds))
