@@ -38,14 +38,21 @@ ToDo:
 - Emmiwinks: Implementierung
 - Lazer: Bestimmung eines geeigneten Scores + Triggerpunkte für Buy/Sell (Hysterese beachten!), am besten relativ zu letztem Quartal etc...
 
-## Phase IV - Fine tuning
+## Phase IV - Fine tuning (verschoben)
 Ziel: Strategie verfeinern durch 
 - Festlegen des potentiellen Portfolio (Asset Pool)
 - Verbesserung des MAUSPAD™-Scores
 - Entscheidung darüber, ob MAUSPAD™-Score-Schwellwerte festgelegt oder optimiert werden sollen
 - Überlegungen, welche Strategie(n) als Benchmark gelten sollen (z.B. Buy-and-Hold des ganzen Portfolios)
 
-#### Anleitung Prototyp
+## Phase IV Fine tuning (neu)
+Ziel: Validierung der KPIs <br>
+ToDos:
+- Emmiwinks: Tabelle mit allen benötigten Daten und KPIs erstellen (done - siehe "simfin_data/kpi-summary.csv")
+- Lazer: Ansehen und Validieren der KPIs, Vergleich verschiedener Unternehmen, ggf. Ergänzen der Tabelle mit gewünschten Unternehmen mithilfe des mauspad_score.py main code
+
+
+#### Anleitung Prototyp (derzeit nicht relevant)
 ```
 git clone https://github.com/Emmiwinks/MAUSPAD.git
 cd MAUSPAD
