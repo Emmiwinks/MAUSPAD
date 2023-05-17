@@ -112,35 +112,31 @@ class Mauspad_score:
     def market_cap(self):
         # market capitalization = close price per share * common shares outstanding
         return self.prices["Close"] * self.prices["Common Shares Outstanding"]
-
+    
+    def total_debt(self):
+        # Gesamtverschuldung
+        return self.bs["Short Term Debt"] + self.bs["Long Term Debt"]
 
     def ev(self):
         # enterprise value = marketCap + totalDebt (short term + long term) - cash
-        return self.market_cap() + self.bs["Short Term Debt"] \
-            + self.bs["Long Term Debt"] - self.bs["Cash & Cash Equivalents"]
-
+        return self.market_cap() + self.total_debt() - self.bs["Cash & Cash Equivalents"]
 
     def ev_mc(self):
         # enterprise value / market capitalization
         return (self.ev() / self.market_cap())
 
-
     def netto_debt(self):
         # total debt / total cash
-        netto_debt = self.bs["Short Term Debt"] + self.bs["Long Term Debt"] \
-                    / self.bs["Cash & Cash Equivalents"]
+        netto_debt = self.total_debt() / self.bs["Cash & Cash Equivalents"]
         return netto_debt
-
 
     def ebit(self):
         # ebit = Revenue - COG (cost of goods) - Operating Expenses
         return self.pl["Revenue"] - self.pl["Cost of Revenue"] - self.pl["Operating Expenses"]
 
-
     def ev_ebit(self):
         # ev / ebit
-        return self.ev() / self.ebit()
-    
+        return self.ev() / self.ebit()    
 
     def net_profit_margin(self):
         # net profit margin = net income * 100 / revenue
